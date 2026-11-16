@@ -1,0 +1,10 @@
+{
+  "nome": "C6",
+  "descricao": "As mesmas três ocorrências do C3, mas o morador confirma que está usando o fogão.",
+  "respostas": {"fogao": "sim"},
+  "ocorrencias": [
+    {"id": "fogao",            "tipo": "fogao",            "gravidade": 9, "probabilidade": 0.70, "prazo_min": 12},
+    {"id": "vazamento",        "tipo": "vazamento",        "gravidade": 6, "probabilidade": 0.80, "prazo_min": 20},
+    {"id": "sobreaquecimento", "tipo": "sobreaquecimento", "gravidade": 8, "probabilidade": 0.60, "prazo_min": 9}
+  ]
+}

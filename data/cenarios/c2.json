@@ -1,0 +1,8 @@
+{
+  "nome": "C2",
+  "descricao": "Fogão + vazamento: competição por orçamento e atenção.",
+  "ocorrencias": [
+    {"id": "fogao",     "tipo": "fogao",     "gravidade": 9, "probabilidade": 0.70, "prazo_min": 12},
+    {"id": "vazamento", "tipo": "vazamento", "gravidade": 6, "probabilidade": 0.80, "prazo_min": 20}
+  ]
+}

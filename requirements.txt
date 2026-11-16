@@ -1,0 +1,9 @@
+kaleido
+numpy
+scipy
+sympy
+pulp>=3.0,<4
+plotly
+matplotlib
+streamlit
+pytest

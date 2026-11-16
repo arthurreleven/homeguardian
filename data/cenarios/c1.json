@@ -1,0 +1,7 @@
+{
+  "nome": "C1",
+  "descricao": "Somente o fogão ligado por tempo excessivo (comportamento base).",
+  "ocorrencias": [
+    {"id": "fogao", "tipo": "fogao", "gravidade": 9, "probabilidade": 0.70, "prazo_min": 12}
+  ]
+}

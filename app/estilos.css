@@ -1,0 +1,29 @@
+/* Home Guardian: estilos da tela do morador.
+   Carregado por app/tela_morador.py. Letras grandes e poucos elementos, pensando em
+   quem não quer interpretar gráficos. A cor de cada bloco vem da variável --c, definida
+   em linha pelo Python conforme o nível (ok, atenção, crítico, informativo). */
+
+/* Faixa com o estado geral da casa, no topo. */
+.hg-banner {
+    padding: 1.2rem 1.5rem;
+    border-radius: 14px;
+    margin-bottom: 1rem;
+    background: var(--c);
+    color: #fff;
+}
+.hg-banner h2 { margin: 0; font-size: 2.1rem; color: #fff; }
+.hg-banner p  { margin: .3rem 0 0 0; font-size: 1.3rem; color: #fff; }
+
+/* Um cartão por ambiente (cozinha, lavanderia, área elétrica). */
+.hg-card {
+    border-left: 10px solid var(--c);
+    padding: 1rem 1.3rem;
+    margin: .7rem 0 .3rem 0;
+    border-radius: 10px;
+    background: rgba(128, 128, 128, .10);   /* neutro: funciona em tema claro e escuro */
+}
+.hg-card h3 { margin: 0 0 .3rem 0; font-size: 1.7rem; }
+.hg-card p  { margin: 0; font-size: 1.4rem; line-height: 1.4; }
+
+/* Botões grandes ("Sim, estou usando" / "Preciso de ajuda"). */
+.stButton button { font-size: 1.4rem; padding: .8rem 1.2rem; }

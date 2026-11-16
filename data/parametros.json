@@ -1,0 +1,294 @@
+{
+  "orcamento": 10,
+  "capacidade_atencao": 3,
+  "lambda_custo": 3.0,
+  "lambda_falso_alarme": 1.0,
+  "prazo_referencia_min": 10,
+  "acoes": {
+    "notificar_morador": {
+      "autorizada": true,
+      "incomodo": 1,
+      "atencao": 2
+    },
+    "alarme_sonoro": {
+      "autorizada": true,
+      "incomodo": 4,
+      "atencao": 1
+    },
+    "acionar_contato": {
+      "autorizada": true,
+      "incomodo": 6,
+      "atencao": 1
+    },
+    "cortar_gas": {
+      "autorizada": true,
+      "incomodo": 8,
+      "atencao": 0
+    },
+    "fechar_valvula_agua": {
+      "autorizada": true,
+      "incomodo": 5,
+      "atencao": 0
+    },
+    "cortar_energia_equip": {
+      "autorizada": true,
+      "incomodo": 6,
+      "atencao": 0
+    }
+  },
+  "acoes_por_tipo": {
+    "fogao": {
+      "notificar_morador": {
+        "eficacia": 0.35,
+        "custo": 0,
+        "tempo_min": 0.5
+      },
+      "alarme_sonoro": {
+        "eficacia": 0.45,
+        "custo": 1,
+        "tempo_min": 0.5
+      },
+      "acionar_contato": {
+        "eficacia": 0.7,
+        "custo": 3,
+        "tempo_min": 8
+      },
+      "cortar_gas": {
+        "eficacia": 0.95,
+        "custo": 5,
+        "tempo_min": 1
+      }
+    },
+    "vazamento": {
+      "notificar_morador": {
+        "eficacia": 0.3,
+        "custo": 0,
+        "tempo_min": 0.5
+      },
+      "acionar_contato": {
+        "eficacia": 0.6,
+        "custo": 3,
+        "tempo_min": 10
+      },
+      "fechar_valvula_agua": {
+        "eficacia": 0.95,
+        "custo": 4,
+        "tempo_min": 1
+      }
+    },
+    "sobreaquecimento": {
+      "notificar_morador": {
+        "eficacia": 0.3,
+        "custo": 0,
+        "tempo_min": 0.5
+      },
+      "alarme_sonoro": {
+        "eficacia": 0.4,
+        "custo": 1,
+        "tempo_min": 0.5
+      },
+      "acionar_contato": {
+        "eficacia": 0.6,
+        "custo": 3,
+        "tempo_min": 10
+      },
+      "cortar_energia_equip": {
+        "eficacia": 0.9,
+        "custo": 4,
+        "tempo_min": 1
+      }
+    }
+  },
+  "conflitos": [
+    [
+      [
+        "fogao",
+        "acionar_contato"
+      ],
+      [
+        "vazamento",
+        "acionar_contato"
+      ]
+    ],
+    [
+      [
+        "fogao",
+        "alarme_sonoro"
+      ],
+      [
+        "sobreaquecimento",
+        "cortar_energia_equip"
+      ]
+    ]
+  ],
+  "monte_carlo": {
+    "n": 1000,
+    "semente": 42,
+    "n_ocorrencias": {
+      "valores": [
+        1,
+        2,
+        3
+      ],
+      "pesos": [
+        0.2,
+        0.3,
+        0.5
+      ]
+    },
+    "orcamento": [
+      2,
+      14
+    ],
+    "capacidade_atencao": [
+      0,
+      4
+    ],
+    "tipos": {
+      "fogao": {
+        "gravidade": [
+          7,
+          10
+        ],
+        "beta": [
+          4,
+          3
+        ],
+        "prazo_min": [
+          8,
+          20
+        ]
+      },
+      "vazamento": {
+        "gravidade": [
+          4,
+          8
+        ],
+        "beta": [
+          4,
+          2
+        ],
+        "prazo_min": [
+          12,
+          30
+        ]
+      },
+      "sobreaquecimento": {
+        "gravidade": [
+          6,
+          10
+        ],
+        "beta": [
+          3,
+          3
+        ],
+        "prazo_min": [
+          6,
+          15
+        ]
+      }
+    }
+  },
+  "interacao": {
+    "verossimilhanca": {
+      "sim": {
+        "perigo": 0.2,
+        "seguro": 0.8
+      },
+      "ajuda": {
+        "perigo": 0.9,
+        "seguro": 0.05
+      },
+      "sem_resposta": {
+        "perigo": 0.6,
+        "seguro": 0.1
+      }
+    },
+    "limiar_supressao": 0.3,
+    "atencao_se_nenhuma_resposta": 0
+  },
+  "estados": {
+    "max_consultas": 2,
+    "envelhecimento": 0.25,
+    "prazo_critico_min": 3.0
+  },
+  "sensores": {
+    "passo_min": 0.5,
+    "janela": 12,
+    "persistencia": 3,
+    "prevalencia_perigo": 0.35,
+    "fator_seguranca_prazo": 0.5,
+    "prazo_maximo_min": 60,
+    "perfis": {
+      "fogao": {
+        "variavel": "temperatura_boca_c",
+        "unidade": "°C",
+        "normal": 25,
+        "ruido": 2.0,
+        "limiar_alerta": 120,
+        "critico": 250,
+        "gravidade": 9,
+        "perigo": {
+          "r0": 3.0,
+          "k": 0.06,
+          "sigma": 0.35
+        },
+        "benigna": {
+          "plato": [
+            130,
+            190
+          ],
+          "tau": 12.0,
+          "sigma": 0.35
+        },
+        "fator_seguranca_prazo": 0.55
+      },
+      "vazamento": {
+        "variavel": "nivel_agua_mm",
+        "unidade": "mm",
+        "normal": 0,
+        "ruido": 0.15,
+        "limiar_alerta": 2,
+        "critico": 15,
+        "gravidade": 6,
+        "perigo": {
+          "r0": 0.15,
+          "k": 0.05,
+          "sigma": 0.35
+        },
+        "benigna": {
+          "plato": [
+            2.5,
+            6.0
+          ],
+          "tau": 8.0,
+          "sigma": 0.35
+        },
+        "fator_seguranca_prazo": 0.35
+      },
+      "sobreaquecimento": {
+        "variavel": "temperatura_equipamento_c",
+        "unidade": "°C",
+        "normal": 45,
+        "ruido": 1.5,
+        "limiar_alerta": 70,
+        "critico": 95,
+        "gravidade": 8,
+        "perigo": {
+          "r0": 1.0,
+          "k": 0.07,
+          "sigma": 0.35
+        },
+        "benigna": {
+          "plato": [
+            75,
+            88
+          ],
+          "tau": 10.0,
+          "sigma": 0.35
+        },
+        "fator_seguranca_prazo": 0.55
+      }
+    }
+  }
+}
