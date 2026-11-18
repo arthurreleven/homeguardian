@@ -123,7 +123,3 @@ Python · NumPy · SciPy · SymPy · PuLP · Plotly · Matplotlib · SQLite · S
 ![home1](images/home1.png)
 
 ![simulacao](images/simulacao.png)
- 
-![cenarios](images/cenarios.png)
-
-![modelo](images/modelo.png)
